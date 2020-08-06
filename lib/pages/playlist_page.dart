@@ -120,7 +120,7 @@ class MyEventItem extends StatelessWidget {
                   right: Radius.circular(16 * (1 - percentageCompleted)),
                 ),
                 child: Image.asset(
-                  'assets/${event.assetName}',
+                  'assets/images/${event.assetName}',
                   width: 80,
                   height: 80,
                   fit: BoxFit.cover,
@@ -167,13 +167,12 @@ class MyEventItem extends StatelessWidget {
 }
 
 final List<Event> events = [
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
-  Event('il_1588xN.1483769858_j7hr.jpg', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
+  Event('placeholder_image.png', 'Song Name', 'Artist Name'),
 ];
 
 class Event {
@@ -201,7 +200,7 @@ class SheetHeader extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.only(top: topMargin, bottom: 12),
           decoration: const BoxDecoration(
-            color: Color(0xFF162A49),
+            color: BackgroundBlack,
           ),
           child: Text(
             'Playing List',

@@ -1,6 +1,7 @@
 import 'package:boringmusicapp/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:boringmusicapp/components/customButton.dart';
+import 'package:boringmusicapp/pages/home_page.dart';
 
 class NowplayingPage extends StatefulWidget {
   static const String id = 'nowplaying_page';
@@ -34,7 +35,7 @@ class _NowplayingPageState extends State<NowplayingPage> {
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Image.asset(
-                      'assets/placeholder_image.png',
+                      'assets/images/placeholder_image.png',
                     ),
                   ),
                 ),
@@ -133,25 +134,7 @@ class _NowplayingPageState extends State<NowplayingPage> {
                   icon: Icon(Icons.pause),
                   color: SurfaceWhite,
                   splashColor: DarkAquamarine,
-//                                    icon: AnimatedIcon(
-//                                      progress: _runnerAnimationController,
-//                                      icon: AnimatedIcons.play_pause,
-//                                      color: Colors.white,
-//                                    ),
-                  onPressed: () {
-//                                      if (_playerState == PlayerState.playing) {
-//                                        _stop();
-//                                      }
-//                                      if (_playerState == PlayerState.paused ||
-//                                          _playerState == PlayerState.stopped) {
-//                                        _play();
-//                                      };
-//                                      setState(() {
-//                                        isRunnerOut
-//                                            ? _runnerAnimationController.reverse()
-//                                            : _runnerAnimationController.forward();
-//                                      });
-                  },
+                  onPressed: () {},
                 ),
               ),
             ),

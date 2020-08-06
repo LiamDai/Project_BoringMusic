@@ -3,7 +3,12 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:boringmusicapp/components/openContaninerWrapper.dart';
 import 'package:boringmusicapp/components/songCard.dart';
+import 'package:boringmusicapp/pages/setting_page.dart';
 import 'package:boringmusicapp/components/customButton.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:boringmusicapp/components/songList.dart';
+import 'package:boringmusicapp/components/assetMusic.dart';
+import 'dart:async';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -12,42 +17,55 @@ class HomePage extends StatefulWidget {
   _HomePageState createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+bool isCompleted = false;
+
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
+  AnimationController playPauseAnimationController;
+
+  final List<StreamSubscription> _subscriptions = [];
+
+  @override
+  void initState() {
+    _subscriptions.add(assetsAudioPlayer.playlistAudioFinished.listen((data) {
+      print("playlistAudioFinished : $data");
+    }));
+    _subscriptions.add(assetsAudioPlayer.audioSessionId.listen((sessionId) {
+      print("audioSessionId : $sessionId");
+    }));
+    _subscriptions
+        .add(AssetsAudioPlayer.addNotificationOpenAction((notification) {
+      return false;
+    }));
+
+    playPauseAnimationController =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 400));
+    super.initState();
+
+    playPauseAnimationController.addStatusListener((status) {
+      if (status == AnimationStatus.completed) {
+        isCompleted = true;
+      } else {
+        isCompleted = false;
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    playPauseAnimationController.dispose();
+    super.dispose();
+  }
+
+  Audio find(List<Audio> source, String fromPath) {
+    return source.firstWhere((element) => element.path == fromPath);
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: const <Widget>[
-              DrawerHeader(
-                decoration: BoxDecoration(
-                  color: PrimaryPurple,
-                ),
-                child: Text(
-                  'Add something here',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-              ListTile(
-                leading: Icon(Icons.message),
-                title: Text('Index1'),
-              ),
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('Index2'),
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Index3'),
-              ),
-            ],
-          ),
-        ),
+        drawer: SettingPage(),
         body: CustomScrollView(
           slivers: <Widget>[
             const SliverAppBar(
@@ -92,21 +110,28 @@ class _HomePageState extends State<HomePage> {
                                   buttonColor: SurfaceBlack,
                                   iconColor: SecondAquamarine,
                                   borderIsVisible: true,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    assetsAudioPlayer.previous(
+                                        /*keepLoopMode: false*/);
+                                  },
                                 ),
                                 CustomButton(
                                   icon: Icons.skip_next,
                                   buttonColor: SurfaceBlack,
                                   iconColor: SecondAquamarine,
                                   borderIsVisible: true,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    assetsAudioPlayer.next(keepLoopMode: true);
+                                  },
                                 ),
                                 CustomButton(
                                   icon: Icons.loop,
                                   buttonColor: LightPurple,
                                   iconColor: White,
                                   borderIsVisible: true,
-                                  onPressed: () {},
+                                  onPressed: () {
+                                    assetsAudioPlayer.toggleLoop();
+                                  },
                                 ),
                               ],
                             ),
@@ -126,27 +151,19 @@ class _HomePageState extends State<HomePage> {
                             padding: const EdgeInsets.all(8.0),
                             child: IconButton(
                               iconSize: 72,
-                              icon: Icon(Icons.pause),
                               color: SurfaceBlack,
                               splashColor: DarkAquamarine,
-//                                    icon: AnimatedIcon(
-//                                      progress: _runnerAnimationController,
-//                                      icon: AnimatedIcons.play_pause,
-//                                      color: Colors.white,
-//                                    ),
+                              icon: AnimatedIcon(
+                                progress: playPauseAnimationController,
+                                icon: AnimatedIcons.play_pause,
+                              ),
                               onPressed: () {
-//                                      if (_playerState == PlayerState.playing) {
-//                                        _stop();
-//                                      }
-//                                      if (_playerState == PlayerState.paused ||
-//                                          _playerState == PlayerState.stopped) {
-//                                        _play();
-//                                      };
-//                                      setState(() {
-//                                        isRunnerOut
-//                                            ? _runnerAnimationController.reverse()
-//                                            : _runnerAnimationController.forward();
-//                                      });
+                                assetsAudioPlayer.playOrPause();
+                                setState(() {
+                                  isCompleted
+                                      ? playPauseAnimationController.reverse()
+                                      : playPauseAnimationController.forward();
+                                });
                               },
                             ),
                           ),
@@ -160,18 +177,76 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ),
-            SliverFixedExtentList(
-              itemExtent: 80.0,
-              delegate: SliverChildBuilderDelegate(
-                //use SliverChildBuilderDelegate to build them lazily
-                (BuildContext context, int index) {
-                  return Container(
-                    alignment: Alignment.center,
-                    child: Text('List Item $index'),
-                  );
-                },
+            SliverList(
+              delegate: SliverChildListDelegate(
+                [
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: <Widget>[
+                      assetsAudioPlayer.builderCurrent(
+                          builder: (BuildContext context, Playing playing) {
+                        return SongsSelector(
+                          audios: audios,
+                          onPlaylistSelected: (myAudios) {
+                            assetsAudioPlayer.open(
+                              Playlist(audios: myAudios),
+                              showNotification: true,
+                              headPhoneStrategy:
+                                  HeadPhoneStrategy.pauseOnUnplugPlayOnPlug,
+//                              phoneCallStrategy:
+//                                  PhoneCallStrategy.pauseOnPhoneCallResumeAfter,
+                            );
+                          },
+                          onSelected: (myAudio) async {
+                            try {
+                              await assetsAudioPlayer.open(
+                                myAudio,
+                                autoStart: true,
+                                showNotification: true,
+                                playInBackground: PlayInBackground.enabled,
+//                                phoneCallStrategy: PhoneCallStrategy.none,
+                                headPhoneStrategy:
+                                    HeadPhoneStrategy.pauseOnUnplug,
+                                notificationSettings: NotificationSettings(
+                                    //seekBarEnabled: false,
+                                    //stopEnabled: true,
+                                    //customStopAction: (player){
+                                    //  player.stop();
+                                    //}
+                                    //prevEnabled: false,
+                                    //customNextAction: (player) {
+                                    //  print("next");
+                                    //}
+                                    //customStopIcon: AndroidResDrawable(name: "ic_stop_custom"),
+                                    //customPauseIcon: AndroidResDrawable(name:"ic_pause_custom"),
+                                    //customPlayIcon: AndroidResDrawable(name:"ic_play_custom"),
+                                    ),
+                              );
+                            } catch (e) {
+                              print(e);
+                            }
+                          },
+                          playing: playing,
+                        );
+                      }),
+                    ],
+                  )
+                ],
               ),
-            ),
+            )
+//            SliverFixedExtentList(
+//              itemExtent: 80.0,
+//              delegate: SliverChildBuilderDelegate(
+//                //use SliverChildBuilderDelegate to build them lazily
+//                (BuildContext context, int index) {
+//                  return Container(
+//                    alignment: Alignment.center,
+//                    child: Text('List Item $index'),
+//                  );
+//                },
+//              ),
+//            ),
           ],
         ),
       ),

@@ -1,16 +1,28 @@
 import 'package:boringmusicapp/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:boringmusicapp/components/inkWellOverLay.dart';
+import 'package:boringmusicapp/pages/home_page.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:boringmusicapp/components/assetMusic.dart';
 
-class SongCard extends StatelessWidget {
+class SongCard extends StatefulWidget {
   const SongCard({this.openContainer});
 
   final VoidCallback openContainer;
 
   @override
+  _SongCardState createState() => _SongCardState();
+}
+
+Audio find(List<Audio> source, String fromPath) {
+  return source.firstWhere((element) => element.path == fromPath);
+}
+
+class _SongCardState extends State<SongCard> {
+  @override
   Widget build(BuildContext context) {
     return InkWellOverlay(
-      openContainer: openContainer,
+      openContainer: widget.openContainer,
       height: 400.0,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -20,13 +32,28 @@ class SongCard extends StatelessWidget {
             height: (MediaQuery.of(context).size.width - 72.0),
             //72.0 is the width of the button in the right.
             child: Center(
-              child: Container(
-                color: Colors.black38,
-                child: Center(
-                  child: Image.asset(
-                    'assets/placeholder_image.png',
-                  ),
-                ),
+              child: assetsAudioPlayer.builderCurrent(
+                builder: (BuildContext context, Playing playing) {
+                  if (playing != null) {
+                    final myAudio = find(audios, playing.audio.assetAudioPath);
+                    return Center(
+                      child: myAudio.metas.image.type == ImageType.network
+                          ? Image.network(
+                              myAudio.metas.image.path,
+                              fit: BoxFit.cover,
+                            )
+                          : Image.asset(
+                              myAudio.metas.image.path,
+                              fit: BoxFit.cover,
+                            ),
+                    );
+                  }
+                  return Center(
+                    child: Image.asset(
+                      'assets/images/placeholder_image.png',
+                    ),
+                  );
+                },
               ),
             ),
           ),

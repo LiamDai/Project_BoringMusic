@@ -37,13 +37,13 @@ class _LibraryCardState extends State<LibraryCard> {
           SlidingCard(
             name: 'Evening Rain',
             description: 'Good night~ it\'s time to sleep.',
-            assetName: 'il_1588xN.1483769858_j7hr.jpg',
+            assetName: 'cloud_whale2.jpg',
             offset: pageOffset,
           ),
           SlidingCard(
             name: 'Space Sleeper',
             description: 'Which planet do you come from?',
-            assetName: 'steve-johnson.jpeg',
+            assetName: 'cloud_whale2.jpg',
             offset: pageOffset - 1,
           ),
         ],
@@ -80,10 +80,10 @@ class SlidingCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.vertical(top: Radius.circular(32)),
               child: Image.asset(
-                'assets/$assetName',
+                'assets/images/$assetName',
                 height: MediaQuery.of(context).size.height * 0.3,
                 alignment: Alignment(-offset.abs(), 0),
-                fit: BoxFit.none,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(height: 8),
