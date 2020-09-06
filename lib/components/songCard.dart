@@ -1,9 +1,8 @@
 import 'package:boringmusicapp/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:boringmusicapp/components/inkWellOverLay.dart';
-import 'package:boringmusicapp/pages/home_page.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
-import 'package:boringmusicapp/components/assetMusic.dart';
+import 'package:boringmusicapp/components/musicResource.dart';
 
 class SongCard extends StatefulWidget {
   const SongCard({this.openContainer});

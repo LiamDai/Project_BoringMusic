@@ -25,4 +25,8 @@ final audios = <Audio>[
   ),
 ];
 
+Audio find(List<Audio> source, String fromPath) {
+  return source.firstWhere((element) => element.path == fromPath);
+}
+
 AssetsAudioPlayer get assetsAudioPlayer => AssetsAudioPlayer.withId("music");

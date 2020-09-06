@@ -1,7 +1,8 @@
 import 'package:boringmusicapp/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:boringmusicapp/components/customButton.dart';
-import 'package:boringmusicapp/pages/home_page.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:boringmusicapp/components/musicResource.dart';
 
 class NowplayingPage extends StatefulWidget {
   static const String id = 'nowplaying_page';
@@ -34,8 +35,32 @@ class _NowplayingPageState extends State<NowplayingPage> {
                   height: 300,
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
-                    child: Image.asset(
-                      'assets/images/placeholder_image.png',
+                    child: Center(
+                      child: assetsAudioPlayer.builderCurrent(
+                        builder: (BuildContext context, Playing playing) {
+                          if (playing != null) {
+                            final myAudio =
+                                find(audios, playing.audio.assetAudioPath);
+                            return Center(
+                              child:
+                                  myAudio.metas.image.type == ImageType.network
+                                      ? Image.network(
+                                          myAudio.metas.image.path,
+                                          fit: BoxFit.contain,
+                                        )
+                                      : Image.asset(
+                                          myAudio.metas.image.path,
+                                          fit: BoxFit.cover,
+                                        ),
+                            );
+                          }
+                          return Center(
+                            child: Image.asset(
+                              'assets/images/placeholder_image.png',
+                            ),
+                          );
+                        },
+                      ),
                     ),
                   ),
                 ),
@@ -129,12 +154,17 @@ class _NowplayingPageState extends State<NowplayingPage> {
                   color: SurfaceBlack),
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: IconButton(
-                  iconSize: 72,
-                  icon: Icon(Icons.pause),
-                  color: SurfaceWhite,
-                  splashColor: DarkAquamarine,
-                  onPressed: () {},
+                child: Hero(
+                  tag: 'heroButton',
+                  child: IconButton(
+                    iconSize: 72,
+                    icon: Icon(Icons.pause),
+                    color: SurfaceWhite,
+                    splashColor: DarkAquamarine,
+                    onPressed: () {
+                      assetsAudioPlayer.playOrPause();
+                    },
+                  ),
                 ),
               ),
             ),

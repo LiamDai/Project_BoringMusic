@@ -20,7 +20,7 @@ class _SettingPageState extends State<SettingPage> {
               color: PrimaryPurple,
             ),
             child: Text(
-              'Add something here',
+              'Setting',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 24,
@@ -28,16 +28,16 @@ class _SettingPageState extends State<SettingPage> {
             ),
           ),
           ListTile(
+            leading: Icon(Icons.search),
+            title: Text('Search music'),
+          ),
+          ListTile(
             leading: Icon(Icons.message),
-            title: Text('Index1'),
+            title: Text('message'),
           ),
           ListTile(
-            leading: Icon(Icons.account_circle),
-            title: Text('Index2'),
-          ),
-          ListTile(
-            leading: Icon(Icons.settings),
-            title: Text('Index3'),
+            leading: Icon(Icons.notifications),
+            title: Text('notification'),
           ),
         ],
       ),

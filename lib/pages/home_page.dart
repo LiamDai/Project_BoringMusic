@@ -7,7 +7,7 @@ import 'package:boringmusicapp/pages/setting_page.dart';
 import 'package:boringmusicapp/components/customButton.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:boringmusicapp/components/songList.dart';
-import 'package:boringmusicapp/components/assetMusic.dart';
+import 'package:boringmusicapp/components/musicResource.dart';
 import 'dart:async';
 
 class HomePage extends StatefulWidget {
@@ -149,22 +149,26 @@ class _HomePageState extends State<HomePage>
                               color: SecondAquamarine),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
-                            child: IconButton(
-                              iconSize: 72,
-                              color: SurfaceBlack,
-                              splashColor: DarkAquamarine,
-                              icon: AnimatedIcon(
-                                progress: playPauseAnimationController,
-                                icon: AnimatedIcons.play_pause,
+                            child: Hero(
+                              tag: 'heroButton',
+                              child: IconButton(
+                                iconSize: 72,
+                                color: SurfaceBlack,
+                                splashColor: DarkAquamarine,
+                                icon: AnimatedIcon(
+                                  progress: playPauseAnimationController,
+                                  icon: AnimatedIcons.play_pause,
+                                ),
+                                onPressed: () {
+                                  assetsAudioPlayer.playOrPause();
+                                  setState(() {
+                                    isCompleted
+                                        ? playPauseAnimationController.reverse()
+                                        : playPauseAnimationController
+                                            .forward();
+                                  });
+                                },
                               ),
-                              onPressed: () {
-                                assetsAudioPlayer.playOrPause();
-                                setState(() {
-                                  isCompleted
-                                      ? playPauseAnimationController.reverse()
-                                      : playPauseAnimationController.forward();
-                                });
-                              },
                             ),
                           ),
                         ),
