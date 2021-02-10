@@ -34,8 +34,6 @@ if we use Flutter in China's Mainland, we would need some help.
 
 ## References
 
-Appbrewery's Online class from Angela Yu: https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547
-
 Flutter CodeLabs: https://flutter.dev/docs/codelabs
 
 Flutter Cookbook: https://flutter.dev/docs/cookbook
@@ -51,6 +49,10 @@ Material Desgin: https://material.io/design
 Sketch: https://www.sketch.com/
 
 ## Slected Videos & Articles
+
+### Online Module:
+
+- [AppBrewery's Online module from Angela Yu](https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547)
 
 ### Bilibili Videos:
 
