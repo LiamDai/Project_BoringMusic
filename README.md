@@ -9,7 +9,7 @@ UI + Media Controller + Media Session + Player.
 However, there is currently no similar architecture or media player like ExoPlayer in Flutter.
 Therefore, this project adopts the architecture of Flutter UI + Assets_Audio_Player Plugin (a third-party music player).
 This may be restrictive, but expect a better solution from the Flutter team in the future.
-At the same time, I tried to implement my own music player in another Native Kotlin Android music player program.
+At the same time, I tried to implement my own music player in another Native Kotlin Android music player project.
 
 All the music used in the project are from https://www.freemusicarchive.org/
 
@@ -27,25 +27,32 @@ UI + Media Controller + Media Session + Player。
 
 if we use Flutter in China's Mainland, we would need some help.
 
-如果在中国大陆地区使用Flutter需要为Flutter设定flutter设置镜像配置，更多帮助请参考：
+如果在中国大陆地区使用Flutter需要为其配置镜像，更多帮助请参考：
 
 - [Use Flutter in China](https://flutter.cn/community/china)
 - [Flutter China Community](https://flutter.cn/)
 
 ## References
 
-- Appbrewery's Online class from Angela Yu: https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547
-- Flutter CodeLabs: https://flutter.dev/docs/codelabs
-- Flutter Cookbook: https://flutter.dev/docs/cookbook
-- Flutter Samples from Google: https://flutter.github.io/samples/#
-- itsallwidgets - A open list of App built with Flutter: https://itsallwidgets.com/
-- assets_audio_player plugin: https://pub.dev/packages/assets_audio_player
-- Material Desgin: https://material.io/design
-- Sketch: https://www.sketch.com/
+Appbrewery's Online class from Angela Yu: https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547
 
-## Slected Useful Videos & Articles
+Flutter CodeLabs: https://flutter.dev/docs/codelabs
 
-### Bilibili Video:
+Flutter Cookbook: https://flutter.dev/docs/cookbook
+
+Flutter Samples from Google: https://flutter.github.io/samples/#
+
+itsallwidgets - A open list of App built with Flutter: https://itsallwidgets.com/
+
+assets_audio_player plugin: https://pub.dev/packages/assets_audio_player
+
+Material Desgin: https://material.io/design
+
+Sketch: https://www.sketch.com/
+
+## Slected Videos & Articles
+
+### Bilibili Videos:
 
 Flutter Performance (The language is Chinese but we could use English subtitles):
 - [Flutter的性能测试和理论 - Flutter团队](https://www.bilibili.com/video/av63626119)
@@ -66,13 +73,14 @@ Flutter State Management:
 - [Pragmatic State Management in Flutter (Google I/O'19)](https://www.youtube.com/watch?v=d_m5csmrf7I)
 - [Pragmatic State Management Using Provider (The Boring Flutter Development Show, Ep. 24)](https://www.youtube.com/watch?v=HrBiNHEqSYU)
 
-### Articles:
+### Highly Recommanded Powerful Articles:
 
-
+- [Flutter 跨平台演进及架构开篇](http://gityuan.com/flutter/)
+- [Flutter 在阿里淘系的体系化建设和业务实践](https://developer.aliyun.com/article/771109)
 
 ## UI Design & ScreenShot
 
-UI is Designed by using Sketch
+UI is designed by Sketch
 
 ![UI Design](https://github.com/LiamDai/Project_BoringMusic/blob/master/ScreenShot/sketch.png)
 
