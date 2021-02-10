@@ -29,13 +29,13 @@ if we use Flutter in China's Mainland, we would need some help.
 
 ## References
 
-Appbrewery's Online class from Angela Yu: https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547
-Flutter CodeLabs: https://flutter.dev/docs/codelabs
-Flutter Cookbook: https://flutter.dev/docs/cookbook
-Flutter Samples from Google: https://flutter.github.io/samples/#
-itsallwidgets - A open list of App built with Flutter: https://itsallwidgets.com/
-assets_audio_player plugin: https://pub.dev/packages/assets_audio_player
-Material Desgin: https://material.io/design
+- Appbrewery's Online class from Angela Yu: https://www.udemy.com/course/flutter-bootcamp-with-dart/?referralCode=2B7724A180C0502A2547
+- Flutter CodeLabs: https://flutter.dev/docs/codelabs
+- Flutter Cookbook: https://flutter.dev/docs/cookbook
+- Flutter Samples from Google: https://flutter.github.io/samples/#
+- itsallwidgets - A open list of App built with Flutter: https://itsallwidgets.com/
+- assets_audio_player plugin: https://pub.dev/packages/assets_audio_player
+- Material Desgin: https://material.io/design
 
 ## Slected Useful Videos & Apps
 
@@ -59,6 +59,10 @@ Flutter UI:
 Flutter State Management:
 - [Pragmatic State Management in Flutter (Google I/O'19)](https://www.youtube.com/watch?v=d_m5csmrf7I)
 - [Pragmatic State Management Using Provider (The Boring Flutter Development Show, Ep. 24)](https://www.youtube.com/watch?v=HrBiNHEqSYU)
+
+### Apps:
+
+
 
 ## UI Design & ScreenShot
 
