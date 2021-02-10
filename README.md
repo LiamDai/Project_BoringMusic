@@ -11,12 +11,17 @@ Therefore, this project adopts the architecture of Flutter UI + Assets_Audio_Pla
 This may be restrictive, but expect a better solution from the Flutter team in the future.
 At the same time, I tried to implement my own music player in another Native Kotlin Android music player program.
 
+All the music used in the project are from https://www.freemusicarchive.org/
+
+
 通常在一个原生安卓音乐播放程序的媒体架构为：
 UI + Media Controller + Media Session + Player。
 然而，目前在Flutter中并没有类似的架构系统和类似ExoPlayer之类的媒体播放器，
 所以本项目采用了Flutter UI + assets_audio_player plugin(一个第三方音乐播放器)的架构。
 这可能会带来很多限制，但是期待官方未来会做出更好的解决方案。
 同时我也尝试在另一个Native Koltin Android的音乐播放器程序中实现自己的音乐播放器。
+
+另：项目中使用的所有音乐均来自https://www.freemusicarchive.org/
 
 ## important
 
@@ -36,8 +41,9 @@ if we use Flutter in China's Mainland, we would need some help.
 - itsallwidgets - A open list of App built with Flutter: https://itsallwidgets.com/
 - assets_audio_player plugin: https://pub.dev/packages/assets_audio_player
 - Material Desgin: https://material.io/design
+- Sketch: https://www.sketch.com/
 
-## Slected Useful Videos & Apps
+## Slected Useful Videos & Articles
 
 ### Bilibili Video:
 
@@ -60,13 +66,13 @@ Flutter State Management:
 - [Pragmatic State Management in Flutter (Google I/O'19)](https://www.youtube.com/watch?v=d_m5csmrf7I)
 - [Pragmatic State Management Using Provider (The Boring Flutter Development Show, Ep. 24)](https://www.youtube.com/watch?v=HrBiNHEqSYU)
 
-### Apps:
+### Articles:
 
 
 
 ## UI Design & ScreenShot
 
-UI Design
+UI is Designed by using Sketch
 
 ![UI Design](https://github.com/LiamDai/Project_BoringMusic/blob/master/ScreenShot/sketch.png)
 
