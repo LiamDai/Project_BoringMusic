@@ -23,9 +23,9 @@ UI + Media Controller + Media Session + Player。
 
 另：项目中使用的所有音乐均来自https://www.freemusicarchive.org/
 
-## important
+## Important Information
 
-if we use Flutter in China's Mainland, we would need some help.
+if we use Flutter in China(Mainland), we would need some help.
 
 如果在中国大陆地区使用Flutter需要为其配置镜像，更多帮助请参考：
 
