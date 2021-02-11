@@ -9,8 +9,8 @@ UI + Media Controller + Media Session + Player.
 However, there is currently no similar architecture or media player like ExoPlayer in Flutter.
 Therefore, this project adopts the architecture of Flutter UI + Assets_Audio_Player Plugin (a third-party music player), 
 which uses the way of asset resource and online resource from the network to play music.
-This may be restrictive, but expect a better solution from the Flutter team in the future.
-At the same time, I tried to implement my own music player in another Native Kotlin Android music player project.
+This could lead to some limitations and potential problems, but expect the Flutter team to come up with a better solution in the future.
+At the same time, I tried to implement my own music player in another Native Kotlin Android music player project. Good luck to me.
 
 All the music used in the project are from https://www.freemusicarchive.org/
 
@@ -19,8 +19,8 @@ All the music used in the project are from https://www.freemusicarchive.org/
 UI + Media Controller + Media Session + Player。
 然而，目前在Flutter中并没有类似的架构系统和类似ExoPlayer之类的媒体播放器，
 所以本项目采用了Flutter UI + assets_audio_player plugin(一个第三方音乐播放器)的架构，使用本地资源和从网络在线获取资源的方式来播放音乐。
-这可能会带来很多限制，但是期待官方未来会做出更好的解决方案。
-同时我也尝试在另一个Native Koltin Android的音乐播放器程序中实现自己的音乐播放器。
+过于依赖于第三方工具会使项目受到很多限制和麻烦，但是期待官方未来会做出更好的解决方案。
+同时我也尝试在另一个Native Koltin Android的音乐播放器程序中实现自己的音乐播放器。也许不久后这个项目会随之进行重构。
 
 另：项目中使用的所有音乐均来自https://www.freemusicarchive.org/
 
