@@ -1,6 +1,6 @@
 # Boring Flutter Music App
 
-一个基于Flutter的音乐播放器。
+一个基于Flutter的音乐播放器(如果有做得不好的地方，还请见谅)。
 
 ## Introduction
 
@@ -25,8 +25,6 @@ UI + Media Controller + Media Session + Player。
 另：项目中使用的所有音乐均来自https://www.freemusicarchive.org/
 
 ## Important Information
-
-if we use Flutter in China(Mainland), we would need some help.
 
 如果在中国大陆地区使用Flutter需要为其配置镜像，更多帮助请参考：
 
@@ -57,7 +55,7 @@ Sketch: https://www.sketch.com/
 
 ### Bilibili Videos:
 
-Flutter Performance (The language is Chinese but we could use English subtitles):
+Flutter Performance:
 - [Flutter的性能测试和理论 - Flutter团队](https://www.bilibili.com/video/av63626119)
 - [深入了解Flutter的高性能图形渲染 - Flutter团队](https://www.bilibili.com/video/av48772383)
 
