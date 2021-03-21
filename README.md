@@ -20,7 +20,7 @@ UI + Media Controller + Media Session + Player。
 然而，目前在Flutter中并没有类似的架构系统和类似ExoPlayer之类的媒体播放器，
 所以本项目采用了Flutter UI + assets_audio_player plugin(一个第三方音乐播放器)的架构，使用本地资源和从网络在线获取资源的方式来播放音乐。
 过于依赖于第三方工具会使项目受到很多限制和麻烦，但是期待官方未来会做出更好的解决方案。
-同时我也尝试在另一个Native Koltin Android的音乐播放器程序中实现自己的音乐播放器。也许不久后这个项目会随之进行重构。
+同时我也尝试在另一个Native Koltin Android的音乐播放器程序中实现自己的音乐播放器。也许不久后这个项目会随之进行重建。
 
 另：项目中使用的所有音乐均来自https://www.freemusicarchive.org/
 
