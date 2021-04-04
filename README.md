@@ -1,6 +1,7 @@
 # Boring Flutter Music App
 
 一个基于Flutter的音乐播放器(如果有做得不好的地方，还请见谅)。
+后续会继续更新的。加油～
 
 ## Introduction
 
